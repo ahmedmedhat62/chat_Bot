@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot</title>
+    <link rel="stylesheet" href="style.css">
+    
+   
+</head>
+<body>
+    <div class="bg-funky">
+        <div class="mesgs">
+            <div class="inbox_msg">
+                <div class="headind_srch">
+                    <div class="recent_heading">
+                        <h4>Chatbot</h4>
+                    </div>
+                </div>
+                <div class="mesgs">
+                    <div class="msg_history">
+                        <!-- Chat history will be displayed here -->
+                    </div>
+                    <div class="type_msg">
+                        <div class="input_msg_write">
+                            <form id="chat-form" class="form-container">
+                                <input type="text" name="msg" class="write_msg" placeholder="Type a message" autocomplete="off" />
+                                <button class="msg_send_btn" type="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i>send </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+    
+
+    <script>
+        const chatForm = document.getElementById('chat-form');
+        const chatHistory = document.querySelector('.msg_history');
+
+        // Define the predefined keywords and their corresponding responses
+        const keywordResponses = {
+            'hello': 'Welcome! How can I assist you? Type (menu) to see our menu today.',
+                    'menu': 'Todays menu includes a variety of coffees, teas, desserts, breakfast menu, juices, and salads.',
+                    'order': 'You can place an order by telling me what you would like or by browsing our menu and letting me know the items and quantities. Enter your address and then type (confirm) to confirm your order.',
+                    'opening': 'We are open from 8:00 AM to 6:00 PM from Monday to Saturday, and from 9:00 AM to 4:00 PM on Sundays.',
+                    'payment': 'We accept cash and credit cards (Visa, Mastercard, American Express).',
+                    'credit card': 'Enter your IBAN and then type (confirm payment).',
+                    'cash': 'Please pay at our address, Amperestraße 10, 94469 Deggendorf.',
+                    'feedback': 'We appreciate your feedback! You can speak to our staff or fill out a feedback form available at the counter.',
+                    'water': ' the small bottle of water costs 1$ and the big one costs 2$ ',
+                    'desserts': 'We offer a variety of desserts such as cheesecake, brownies, and cookies. Prices range from $3.99 for a cookie to $6.99 for a slice of cheesecake.',
+                    'cheesecake': 'Great! We have a variety of cheesecakes available. Type (confirm) to confirm your order.',
+                    'brownies': 'Great! We have brownies available. Type (confirm) to confirm your order.',
+                    'cookies': 'Great! We have cookies available. Type (confirm) to confirm your order.',
+                    'breakfast': 'Our breakfast menu includes options like croissants, breakfast burritos, and yogurt parfaits. Prices start at $4.99 for a croissant and go up to $8.99 for a breakfast burrito.',
+                    'croissant': 'Good choice! Would you like to add anything else to your order?',
+                    'breakfast burrito': 'Good choice! Would you like to add anything else to your order?',
+                    'yogurt parfait': 'Good choice! Would you like to add anything else to your order?'
+        };
+
+        // Function to display a message in the chat history
+        function displayMessage(msg, sender) {
+            const div = document.createElement('div');
+            div.classList.add('msg');
+            div.innerHTML = `
+                <div class="msg_${sender}">
+                    <p>${msg}</p>
+                </div>
+            `;
+            chatHistory.appendChild(div);
+        }
+
+        // Function to handle user input
+        function handleInput(e) {
+            e.preventDefault();
+            const input = e.target.elements.msg.value.trim();
+            if (!input) {
+                return;
+            }
+            e.target.elements.msg.value = '';
+            displayMessage(input, 'outgoing');
+
+            // Check if the input matches any of the predefined keywords
+            for (const keyword in keywordResponses) {
+                if (input.toLowerCase().includes(keyword)) {
+                    displayMessage(keywordResponses[keyword], 'incoming');
+                    break;
+                }
+            }
+        }
+
+        chatForm.addEventListener('submit', handleInput);
+    </script>
+</body>
+</html>

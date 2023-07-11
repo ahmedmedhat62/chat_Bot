@@ -1,0 +1,78 @@
+
+.bg-funky {
+    background-color: #f6f6f6;
+    height: 100%;
+    padding: 30px;
+    
+}
+
+/* Chatbot heading */
+.recent_heading h4 {
+    margin: 0px;
+    font-size: 18px;
+}
+
+/* Chat history container */
+.msg_history {
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+/* Outgoing message container */
+.msg.outgoing p {
+    background: #007bff;
+    color: #fff;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 60%;
+    word-wrap: break-word;
+}
+
+/* Incoming message container */
+.msg.incoming p {
+    background: #f6f6f6;
+    color: #000;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 60%;
+    word-wrap: break-word;
+}
+
+/* Chat input container */
+.type_msg {
+    background-color: #fff;
+    padding: 15px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Chat input field */
+.write_msg {
+    border: none;
+    width: 80%;
+    resize: none;
+    outline: none;
+    padding: 0 10px;
+    height: 50px;
+    border-radius: 25px;
+    background-color: #f6f6f6;
+}
+
+/* Send button */
+.msg_send_btn {
+    border: none;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    height: 50px;
+    width: 20%;
+    border-radius: 25px;
+}
+
+/* Send button icon */
+.msg_send_btn i {
+    font-size: 18px;
+}
